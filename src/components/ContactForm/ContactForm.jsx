@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { nanoid } from "@reduxjs/toolkit";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contactsOps";
@@ -30,8 +29,9 @@ const ContactForm = () => {
   const onAddContact = (values, actions) => {
     const finalContact = {
       ...values,
-      id: nanoid(),
     };
+
+    console.log(finalContact);
 
     dispatch(addContact(finalContact));
 
