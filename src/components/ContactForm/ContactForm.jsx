@@ -27,13 +27,7 @@ const ContactForm = () => {
   const dispatch = useDispatch();
 
   const onAddContact = (values, actions) => {
-    const finalContact = {
-      ...values,
-    };
-
-    console.log(finalContact);
-
-    dispatch(addContact(finalContact));
+    dispatch(addContact(values));
 
     actions.resetForm();
   };

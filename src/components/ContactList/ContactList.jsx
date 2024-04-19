@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectVisibleContacts } from "../../redux/contactsSlice";
+import { selectFilteredContacts } from "../../redux/contactsSlice";
 
 import Loader from "../Loader/Loader";
 import ErrorMessenger from "../ErrorMessenger/ErrorMessenger";
@@ -11,8 +11,7 @@ import css from "./ContactList.module.css";
 const ContactList = () => {
   const loading = useSelector((state) => state.contacts.loading);
   const errorMessenger = useSelector((state) => state.contacts.error);
-
-  const filteredContacts = useSelector(selectVisibleContacts);
+  const filteredContacts = useSelector(selectFilteredContacts);
 
   return (
     <>
