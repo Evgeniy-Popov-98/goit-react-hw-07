@@ -1,26 +1,16 @@
 import { useSelector } from "react-redux";
-import { useMemo } from "react";
 
 import Loader from "../Loader/Loader";
 import Contact from "../Contact/Contact";
 
 import clsx from "clsx";
 import css from "./ContactList.module.css";
+import { selectVisibleContacts } from "../../redux/contactsSlice";
 
 const ContactList = () => {
-  const selectContacts = useSelector((state) => state.contacts.items);
-  const selectNameFilter = useSelector((state) => state.filters.name);
   const loading = useSelector((state) => state.contacts.loading);
 
-  const filteredContacts = useMemo(
-    () =>
-      selectContacts.filter((contact) => {
-        return contact.name
-          .toLowerCase()
-          .includes(selectNameFilter.toLowerCase());
-      }),
-    [selectNameFilter, selectContacts]
-  );
+  const filteredContacts = useSelector(selectVisibleContacts);
 
   return (
     <ul className={clsx(css.contactsList)}>
