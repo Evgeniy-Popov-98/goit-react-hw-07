@@ -1,25 +1,30 @@
 import { useSelector } from "react-redux";
+import { selectVisibleContacts } from "../../redux/contactsSlice";
 
 import Loader from "../Loader/Loader";
+import ErrorMessenger from "../ErrorMessenger/ErrorMessenger";
 import Contact from "../Contact/Contact";
 
 import clsx from "clsx";
 import css from "./ContactList.module.css";
-import { selectVisibleContacts } from "../../redux/contactsSlice";
 
 const ContactList = () => {
   const loading = useSelector((state) => state.contacts.loading);
+  const errorMessenger = useSelector((state) => state.contacts.error);
 
   const filteredContacts = useSelector(selectVisibleContacts);
 
   return (
-    <ul className={clsx(css.contactsList)}>
+    <>
       {loading && <Loader />}
-      {Array.isArray(filteredContacts) &&
-        filteredContacts.map((contact) => {
-          return <Contact key={contact.id} contact={contact} />;
-        })}
-    </ul>
+      {errorMessenger && <ErrorMessenger />}
+      <ul className={clsx(css.contactsList)}>
+        {Array.isArray(filteredContacts) &&
+          filteredContacts.map((contact) => {
+            return <Contact key={contact.id} contact={contact} />;
+          })}
+      </ul>
+    </>
   );
 };
 

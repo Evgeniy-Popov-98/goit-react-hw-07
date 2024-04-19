@@ -4,7 +4,7 @@ const Loader = () => {
   return (
     <div
       style={{
-        marginTop: "140px",
+        marginTop: "70px",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",

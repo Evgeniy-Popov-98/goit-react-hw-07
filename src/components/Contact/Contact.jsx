@@ -13,9 +13,7 @@ const Contact = ({ contact }) => {
   return (
     <div className={clsx(css.contactBox)}>
       <ul className={clsx(css.contactList)}>
-        <li className={clsx(css.contactItem)}>
-          🧛‍♂️ {contact.name} - {contact.id}
-        </li>
+        <li className={clsx(css.contactItem)}>🧛‍♂️ {contact.name}</li>
         <li className={clsx(css.contactItem)}>📞 {contact.number}</li>
       </ul>
       <button
