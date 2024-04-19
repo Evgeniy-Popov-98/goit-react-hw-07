@@ -1,4 +1,3 @@
-import { createStoreHook } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 
 import { contactsReducer } from "./contactsSlice";
@@ -10,5 +9,3 @@ export const store = configureStore({
     filters: filtersReducer,
   },
 });
-
-export const persistor = createStoreHook(store);
